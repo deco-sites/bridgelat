@@ -76,12 +76,8 @@ function Navbar({ logo, items }: { logo: LiveImage; items: INavItem[] }) {
           displayMenu.value ? "scale-y-100 max-h-screen" : "scale-y-0 max-h-o"
         } origin-top transtion-transform duration-300 flex flex-row justify-between items-center w-full max-lg:absolute max-lg:left-[-5vw] max-lg:top-[90px] max-lg:bg-white max-lg:flex-row max-lg:!p-0 max-lg:w-screen lg:scale-100`}
       >
-        <ul
-          class="flex-auto flex justify-center text-white max-lg:flex-col max-lg:items-center"
-        >
-          {items.map((item) => (
-            <NavItem item={item} />
-          ))}
+        <ul class="flex-auto flex justify-center text-white max-lg:flex-col max-lg:items-center">
+          {items.map((item) => <NavItem item={item} />)}
         </ul>
       </div>
     </div>
