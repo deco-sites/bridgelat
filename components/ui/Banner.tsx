@@ -239,6 +239,7 @@ function BannerItem(
           class={`relative ${
             BUTTON_POSITION[button.position ?? "left"]
           } mt-8 normal-case py-[14px] px-[42px] border border-white/30 rounded-[45px] font-medium text-[15px] bg-transparent text-white hover:bg-transparent hover:border-white min-w-[217px]`}
+          aria-label={`banner button ${button.label}`}
         >
           {button.label}
         </Button>

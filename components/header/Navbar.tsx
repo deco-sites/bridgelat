@@ -12,6 +12,7 @@ function MenuIcon() {
     <Button
       class="md:hidden bg-transparent border-0 hover:bg-transparent hover:border-0 absolute right-0"
       onClick={() => displayMenu.value = true}
+      aria-label="Open menu"
     >
       <svg
         width="21"
@@ -34,6 +35,7 @@ function CloseIcon() {
     <Button
       class="md:hidden bg-transparent border-0 hover:bg-transparent hover:border-0 absolute right-0"
       onClick={() => displayMenu.value = false}
+      aria-label="Close menu"
     >
       <svg
         width="17"
@@ -72,9 +74,9 @@ function Navbar({ logo, items }: { logo: LiveImage; items: INavItem[] }) {
       <div
         class={`p-[10px] ${
           displayMenu.value ? "scale-y-100 max-h-screen" : "scale-y-0 max-h-o"
-        } transition-all flex flex-row justify-between items-center w-full max-md:absolute max-md:left-0 max-md:top-[90px] max-md:bg-white max-md:flex-row max-md:!p-0 max-md:w-screen max-md:ml-[-22px]`}
+        } transition-all flex flex-row justify-between items-center w-full max-md:absolute max-md:left-0 max-md:top-[90px] max-md:bg-white max-md:flex-row max-md:!p-0 max-md:w-screen max-md:ml-[-22px] md:scale-100`}
       >
-        <div
+        <ul
           class={`${
             displayMenu.value ? "flex-col items-center" : ""
           } flex-auto flex justify-center text-white`}
@@ -82,7 +84,7 @@ function Navbar({ logo, items }: { logo: LiveImage; items: INavItem[] }) {
           {items.map((item) => (
             <NavItem item={item} menuActive={displayMenu.value} />
           ))}
-        </div>
+        </ul>
       </div>
     </div>
   );
