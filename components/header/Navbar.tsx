@@ -10,7 +10,7 @@ const displayMenu = signal(false);
 function MenuIcon() {
   return (
     <Button
-      class="md:hidden bg-transparent border-0 hover:bg-transparent hover:border-0 absolute right-0"
+      class="lg:hidden bg-transparent border-0 hover:bg-transparent hover:border-0 absolute right-0"
       onClick={() => displayMenu.value = true}
       aria-label="Open menu"
     >
@@ -33,7 +33,7 @@ function MenuIcon() {
 function CloseIcon() {
   return (
     <Button
-      class="md:hidden bg-transparent border-0 hover:bg-transparent hover:border-0 absolute right-0"
+      class="lg:hidden bg-transparent border-0 hover:bg-transparent hover:border-0 absolute right-0"
       onClick={() => displayMenu.value = false}
       aria-label="Close menu"
     >
@@ -55,8 +55,8 @@ function CloseIcon() {
 
 function Navbar({ logo, items }: { logo: LiveImage; items: INavItem[] }) {
   return (
-    <div class="w-full h-[10vh] flex items-center max-md:justify-between relative">
-      <div class="md:w-1/5 flex items-center">
+    <div class="w-full h-[10vh] flex items-center max-lg:justify-between relative">
+      <div class="lg:w-1/5 flex items-center">
         <a
           href="/"
           class="flex-grow inline-flex items-center"
@@ -74,15 +74,13 @@ function Navbar({ logo, items }: { logo: LiveImage; items: INavItem[] }) {
       <div
         class={`p-[10px] ${
           displayMenu.value ? "scale-y-100 max-h-screen" : "scale-y-0 max-h-o"
-        } transition-all flex flex-row justify-between items-center w-full max-md:absolute max-md:left-0 max-md:top-[90px] max-md:bg-white max-md:flex-row max-md:!p-0 max-md:w-screen max-md:ml-[-22px] md:scale-100`}
+        } origin-top transtion-transform duration-300 flex flex-row justify-between items-center w-full max-lg:absolute max-lg:left-[-5vw] max-lg:top-[90px] max-lg:bg-white max-lg:flex-row max-lg:!p-0 max-lg:w-screen lg:scale-100`}
       >
         <ul
-          class={`${
-            displayMenu.value ? "flex-col items-center" : ""
-          } flex-auto flex justify-center text-white`}
+          class="flex-auto flex justify-center text-white max-lg:flex-col max-lg:items-center"
         >
           {items.map((item) => (
-            <NavItem item={item} menuActive={displayMenu.value} />
+            <NavItem item={item} />
           ))}
         </ul>
       </div>
