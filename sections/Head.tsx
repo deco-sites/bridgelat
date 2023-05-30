@@ -10,12 +10,13 @@ export interface Props {
 }
 
 export default function HeadComponent({
-  title = "deco.cx — starter site",
-  description = "Deliver complete commerce experiences — start here!",
-  url = "https://start.deco.site",
+  title = "Bridgelat",
+  description =
+    "Empoderamos a los emprendedores de América Latina con información y capital de riesgo. Contáctanos ahora mismo y conviértete en el siguiente Unicornio.",
+  url = "#",
   imageUrl = "https://deco.cx/images/deco-logo-light.png",
   faviconUrl = "",
-  themeColor = "#003232",
+  themeColor = "#4F39EB",
 }: Props) {
   return (
     <Head>
@@ -44,10 +45,10 @@ export default function HeadComponent({
       <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
       </link>
       <link rel="manifest" href="/site.webmanifest"></link>
-      <link rel="mask-icon" href="/safari-pinned-tab.svg" data-color="#003232">
+      <link rel="mask-icon" href="/safari-pinned-tab.svg" data-color="#4F39EB">
       </link>
-      <meta name="theme-color" content="#003232"></meta>
-      <meta name="msapplication-TileColor" content="#003232"></meta>
+      <meta name="theme-color" content="#4F39EB"></meta>
+      <meta name="msapplication-TileColor" content="#4F39EB"></meta>
       {/* TODO: Procurar o script */}
       {/* <script async id="quicklink" src="/scripts/quicklink.umd.js"></script> */}
       <script

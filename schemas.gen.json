@@ -12,7 +12,6 @@
           "type": "string",
           "not": {
             "enum": [
-              "deco-sites/bridgelat/functions/LoadGitHubRaw.ts",
               "deco-sites/std/functions/butterCMSAds.ts",
               "deco-sites/std/functions/butterCMSBrands.ts",
               "deco-sites/std/functions/butterCMSCategories.ts",
@@ -59,6 +58,8 @@
               "deco-sites/std/loaders/vtex/navbar.ts",
               "deco-sites/std/loaders/vtex/user.ts",
               "deco-sites/std/loaders/vtex/wishlist.ts",
+              "./islands/Header.tsx",
+              "./islands/SliderJS.tsx",
               "$live/handlers/devPage.ts",
               "$live/handlers/fresh.ts",
               "$live/handlers/proxy.ts",
@@ -70,9 +71,10 @@
               "$live/sections/PageInclude.tsx",
               "$live/sections/Slot.tsx",
               "$live/sections/UseSlot.tsx",
+              "deco-sites/bridgelat/sections/Carousel.tsx",
               "deco-sites/bridgelat/sections/DesignSystem.tsx",
-              "deco-sites/bridgelat/sections/GetStarted.tsx",
               "deco-sites/bridgelat/sections/Head.tsx",
+              "deco-sites/bridgelat/sections/Header.tsx",
               "deco-sites/std/sections/Analytics.tsx",
               "deco-sites/std/sections/configButterCMS.global.tsx",
               "deco-sites/std/sections/configOCC.global.tsx",
@@ -83,8 +85,10 @@
               "deco-sites/std/sections/SEO.tsx",
               "deco-sites/std/sections/SEOPDP.tsx",
               "deco-sites/std/sections/SEOPLP.tsx",
+              "deco-sites/std/sections/VTEXPortalDataLayerCompatibility.tsx",
               "$live/matchers/MatchAlways.ts",
               "$live/matchers/MatchDate.ts",
+              "$live/matchers/MatchDevice.ts",
               "$live/matchers/MatchEnvironment.ts",
               "$live/matchers/MatchHost.ts",
               "$live/matchers/MatchMulti.ts",
@@ -117,32 +121,6 @@
           }
         }
       }
-    },
-    "ZGVjby1zaXRlcy9icmlkZ2VsYXQvZnVuY3Rpb25zL0xvYWRHaXRIdWJSYXcudHM=@Props": {
-      "type": "object",
-      "properties": {
-        "repo": {
-          "type": "string",
-          "description": "Complete user/repo format",
-          "title": "Repo"
-        },
-        "branch": {
-          "type": "string",
-          "description": "Branch",
-          "title": "Branch"
-        },
-        "path": {
-          "type": "string",
-          "description": "Path to fetch, or leave blank and add :path route param.",
-          "title": "Path"
-        }
-      },
-      "required": [
-        "repo",
-        "branch",
-        "path"
-      ],
-      "title": "deco-sites/bridgelat/functions/LoadGitHubRaw.ts@Props"
     },
     "ZGVjby1zaXRlcy9zdGQvY29tbWVyY2UvYnV0dGVyQ01TL3R5cGVzLnRz@Category": {
       "type": "object",
@@ -264,7 +242,7 @@
         },
         {
           "title": "Butter CMS Featured Ads Loader",
-          "description": "Usefull for shelves and static galleries.",
+          "description": "Useful for shelves and static galleries.",
           "type": "object",
           "required": [
             "__resolveType"
@@ -281,7 +259,7 @@
         },
         {
           "title": "Butter CMS Featured Posts Loader",
-          "description": "Usefull for shelves and static galleries.",
+          "description": "Useful for shelves and static galleries.",
           "type": "object",
           "required": [
             "__resolveType"
@@ -348,7 +326,7 @@
         },
         {
           "title": "Butter CMS Featured Brands Loader",
-          "description": "Usefull for list featured blog's brands.",
+          "description": "Useful for list featured blog's brands.",
           "type": "object",
           "required": [
             "__resolveType"
@@ -365,7 +343,7 @@
         },
         {
           "title": "Butter CMS Featured Places Loader",
-          "description": "Usefull for listing places",
+          "description": "Useful for listing places",
           "type": "object",
           "required": [
             "__resolveType"
@@ -396,7 +374,7 @@
         },
         {
           "title": "Butter CMS Categories Loader",
-          "description": "Usefull for list blog's categories",
+          "description": "Useful for list blog's categories",
           "type": "object",
           "required": [
             "__resolveType"
@@ -634,7 +612,7 @@
         },
         {
           "title": "Butter CMS Posts Loader",
-          "description": "Usefull for paginated galleries.",
+          "description": "Useful for paginated galleries.",
           "type": "object",
           "allOf": [
             {
@@ -656,7 +634,7 @@
         },
         {
           "title": "Butter CMS Related Posts Loader",
-          "description": "Usefull for paginated or not galleries. Works on routes of type /blog/:slug",
+          "description": "Useful for paginated or not galleries. Works on routes of type /blog/:slug",
           "type": "object",
           "allOf": [
             {
@@ -1551,6 +1529,40 @@
       ],
       "title": "Product"
     },
+    "ZGVjby1zaXRlcy9zdGQvY29tbWVyY2UvdHlwZXMudHM=@Seo": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "title": "Title"
+        },
+        "description": {
+          "type": "string",
+          "title": "Description"
+        },
+        "canonical": {
+          "type": "string",
+          "title": "Canonical"
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "canonical"
+      ],
+      "title": "Seo"
+    },
+    "ZGVjby1zaXRlcy9zdGQvY29tbWVyY2UvdHlwZXMudHM=@Seo|null": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tbWVyY2UvdHlwZXMudHM=@Seo"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Seo|null"
+    },
     "ZGVjby1zaXRlcy9zdGQvY29tbWVyY2UvdHlwZXMudHM=@ProductDetailsPage": {
       "type": "object",
       "properties": {
@@ -1566,6 +1578,10 @@
         "product": {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tbWVyY2UvdHlwZXMudHM=@Product",
           "title": "Product"
+        },
+        "seo": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tbWVyY2UvdHlwZXMudHM=@Seo|null",
+          "title": "Seo"
         }
       },
       "required": [
@@ -1787,7 +1803,7 @@
         },
         {
           "title": "Shopify - Search Products",
-          "description": "Usefull for shelves and static galleries.",
+          "description": "Useful for shelves and static galleries.",
           "type": "object",
           "allOf": [
             {
@@ -1831,7 +1847,7 @@
         },
         {
           "title": "VTEX - Search Products - legacy (deprecated)",
-          "description": "Usefull for shelves and static galleries.",
+          "description": "Useful for shelves and static galleries.",
           "deprecated": true,
           "type": "object",
           "allOf": [
@@ -1900,7 +1916,7 @@
         },
         {
           "title": "VTEX product list - Intelligent Search",
-          "description": "Usefull for shelves and galleries.",
+          "description": "Useful for shelves and galleries.",
           "type": "object",
           "allOf": [
             {
@@ -2240,6 +2256,10 @@
         "sortOptions": {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tbWVyY2UvdHlwZXMudHM=@SortOption[]",
           "title": "Sort Options"
+        },
+        "seo": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tbWVyY2UvdHlwZXMudHM=@Seo|null",
+          "title": "Seo"
         }
       },
       "required": [
@@ -6469,12 +6489,17 @@
     "ZGVjby1zaXRlcy9zdGQvcGFja3MvdnRleC9sb2FkZXJzL3VzZXIudHM=@User": {
       "type": "object",
       "properties": {
+        "id": {
+          "type": "string",
+          "title": "Id"
+        },
         "email": {
           "type": "string",
           "title": "Email"
         }
       },
       "required": [
+        "id",
         "email"
       ],
       "title": "User"
@@ -6586,6 +6611,55 @@
       ],
       "title": "deco-sites/std/packs/vtex/loaders/wishlist.ts@Props"
     },
+    "ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Image": {
+      "type": "string",
+      "format": "image-uri",
+      "title": "Image"
+    },
+    "ZGVjby1zaXRlcy9icmlkZ2VsYXQvY29tcG9uZW50cy9oZWFkZXIvSGVhZGVyLnRzeA==@NavItem": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string",
+          "title": "Label"
+        },
+        "href": {
+          "type": "string",
+          "title": "Href"
+        }
+      },
+      "required": [
+        "label",
+        "href"
+      ],
+      "title": "NavItem"
+    },
+    "ZGVjby1zaXRlcy9icmlkZ2VsYXQvY29tcG9uZW50cy9oZWFkZXIvSGVhZGVyLnRzeA==@NavItem[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ZGVjby1zaXRlcy9icmlkZ2VsYXQvY29tcG9uZW50cy9oZWFkZXIvSGVhZGVyLnRzeA==@NavItem"
+      },
+      "title": "NavItem[]"
+    },
+    "ZGVjby1zaXRlcy9icmlkZ2VsYXQvY29tcG9uZW50cy9oZWFkZXIvSGVhZGVyLnRzeA==@Props": {
+      "type": "object",
+      "properties": {
+        "logo": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Image",
+          "description": "Logo",
+          "title": "Logo"
+        },
+        "navItems": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9icmlkZ2VsYXQvY29tcG9uZW50cy9oZWFkZXIvSGVhZGVyLnRzeA==@NavItem[]",
+          "title": "Navigation items",
+          "description": "Navigation items used both on mobile and desktop menus"
+        }
+      },
+      "required": [
+        "logo"
+      ],
+      "title": "deco-sites/bridgelat/components/header/Header.tsx@Props"
+    },
     "ZGVjby1jeC9saXZlL2Jsb2Nrcy9wYWdlLnRz@Page": {
       "$ref": "#/root/pages",
       "title": "Page"
@@ -6663,7 +6737,16 @@
           "title": "Path Template"
         },
         "handler": {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9oYW5kbGVyLnRz@Handler",
+          "type": "object",
+          "properties": {
+            "value": {
+              "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9oYW5kbGVyLnRz@Handler",
+              "title": "Value"
+            }
+          },
+          "required": [
+            "value"
+          ],
           "title": "Handler"
         }
       },
@@ -6892,6 +6975,425 @@
         "sections"
       ],
       "title": "deco-cx/live/sections/UseSlot.tsx@Props"
+    },
+    "ZGVjby1zaXRlcy9icmlkZ2VsYXQvY29tcG9uZW50cy91aS9CYW5uZXIudHN4@Banner": {
+      "type": "object",
+      "properties": {
+        "backgroundDesktop": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Image",
+          "description": "Background desktop image",
+          "title": "Background Desktop"
+        },
+        "backgroundMobile": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Image",
+          "description": "Background mobile image",
+          "title": "Background Mobile"
+        },
+        "title": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string",
+              "title": "Text"
+            },
+            "animation": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "const": "none"
+                },
+                {
+                  "type": "string",
+                  "const": "slideTop"
+                },
+                {
+                  "type": "string",
+                  "const": "slideTopMedium"
+                },
+                {
+                  "type": "string",
+                  "const": "slideTopShort"
+                },
+                {
+                  "type": "string",
+                  "const": "slideRight"
+                },
+                {
+                  "type": "string",
+                  "const": "slideRightMedium"
+                },
+                {
+                  "type": "string",
+                  "const": "slideRightShort"
+                },
+                {
+                  "type": "string",
+                  "const": "slideBottom"
+                },
+                {
+                  "type": "string",
+                  "const": "slideBottomMedium"
+                },
+                {
+                  "type": "string",
+                  "const": "slideBottomShort"
+                },
+                {
+                  "type": "string",
+                  "const": "slideLeft"
+                },
+                {
+                  "type": "string",
+                  "const": "slideLeftMedium"
+                },
+                {
+                  "type": "string",
+                  "const": "slideLeftShort"
+                }
+              ],
+              "type": "string",
+              "title": "Animation"
+            },
+            "animationDuration": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "const": "0.5s"
+                },
+                {
+                  "type": "string",
+                  "const": "1s"
+                },
+                {
+                  "type": "string",
+                  "const": "1.5s"
+                },
+                {
+                  "type": "string",
+                  "const": "2s"
+                },
+                {
+                  "type": "string",
+                  "const": "2.5s"
+                },
+                {
+                  "type": "string",
+                  "const": "3s"
+                }
+              ],
+              "type": "string",
+              "title": "Animation Duration"
+            }
+          },
+          "required": [
+            "text"
+          ],
+          "title": "Title",
+          "description": "Title (information located above the main text)"
+        },
+        "imageBeforeTitle": {
+          "type": "object",
+          "properties": {
+            "image": {
+              "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Image",
+              "title": "Image"
+            },
+            "alt": {
+              "type": "string",
+              "title": "Alt"
+            },
+            "animation": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "const": "none"
+                },
+                {
+                  "type": "string",
+                  "const": "slideTop"
+                },
+                {
+                  "type": "string",
+                  "const": "slideTopMedium"
+                },
+                {
+                  "type": "string",
+                  "const": "slideTopShort"
+                },
+                {
+                  "type": "string",
+                  "const": "slideRight"
+                },
+                {
+                  "type": "string",
+                  "const": "slideRightMedium"
+                },
+                {
+                  "type": "string",
+                  "const": "slideRightShort"
+                },
+                {
+                  "type": "string",
+                  "const": "slideBottom"
+                },
+                {
+                  "type": "string",
+                  "const": "slideBottomMedium"
+                },
+                {
+                  "type": "string",
+                  "const": "slideBottomShort"
+                },
+                {
+                  "type": "string",
+                  "const": "slideLeft"
+                },
+                {
+                  "type": "string",
+                  "const": "slideLeftMedium"
+                },
+                {
+                  "type": "string",
+                  "const": "slideLeftShort"
+                }
+              ],
+              "type": "string",
+              "title": "Animation"
+            },
+            "animationDuration": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "const": "0.5s"
+                },
+                {
+                  "type": "string",
+                  "const": "1s"
+                },
+                {
+                  "type": "string",
+                  "const": "1.5s"
+                },
+                {
+                  "type": "string",
+                  "const": "2s"
+                },
+                {
+                  "type": "string",
+                  "const": "2.5s"
+                },
+                {
+                  "type": "string",
+                  "const": "3s"
+                }
+              ],
+              "type": "string",
+              "title": "Animation Duration"
+            }
+          },
+          "required": [
+            "image",
+            "alt"
+          ],
+          "title": "Image Before Title",
+          "description": "Image before title"
+        },
+        "mainText": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string",
+              "title": "Text"
+            },
+            "size": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "const": "sm"
+                },
+                {
+                  "type": "string",
+                  "const": "md"
+                },
+                {
+                  "type": "string",
+                  "const": "xl"
+                }
+              ],
+              "type": "string",
+              "title": "Size"
+            },
+            "animation": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "const": "none"
+                },
+                {
+                  "type": "string",
+                  "const": "slideTop"
+                },
+                {
+                  "type": "string",
+                  "const": "slideTopMedium"
+                },
+                {
+                  "type": "string",
+                  "const": "slideTopShort"
+                },
+                {
+                  "type": "string",
+                  "const": "slideRight"
+                },
+                {
+                  "type": "string",
+                  "const": "slideRightMedium"
+                },
+                {
+                  "type": "string",
+                  "const": "slideRightShort"
+                },
+                {
+                  "type": "string",
+                  "const": "slideBottom"
+                },
+                {
+                  "type": "string",
+                  "const": "slideBottomMedium"
+                },
+                {
+                  "type": "string",
+                  "const": "slideBottomShort"
+                },
+                {
+                  "type": "string",
+                  "const": "slideLeft"
+                },
+                {
+                  "type": "string",
+                  "const": "slideLeftMedium"
+                },
+                {
+                  "type": "string",
+                  "const": "slideLeftShort"
+                }
+              ],
+              "type": "string",
+              "title": "Animation"
+            },
+            "animationDuration": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "const": "0.5s"
+                },
+                {
+                  "type": "string",
+                  "const": "1s"
+                },
+                {
+                  "type": "string",
+                  "const": "1.5s"
+                },
+                {
+                  "type": "string",
+                  "const": "2s"
+                },
+                {
+                  "type": "string",
+                  "const": "2.5s"
+                },
+                {
+                  "type": "string",
+                  "const": "3s"
+                }
+              ],
+              "type": "string",
+              "title": "Animation Duration"
+            }
+          },
+          "required": [
+            "text"
+          ],
+          "title": "Main Text",
+          "description": "Main text"
+        },
+        "button": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string",
+              "title": "Label"
+            },
+            "href": {
+              "type": "string",
+              "title": "Href"
+            },
+            "position": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "const": "center"
+                },
+                {
+                  "type": "string",
+                  "const": "left"
+                },
+                {
+                  "type": "string",
+                  "const": "right"
+                }
+              ],
+              "type": "string",
+              "title": "Position"
+            },
+            "hover": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "title": "Hover"
+            }
+          },
+          "required": [
+            "label",
+            "href"
+          ],
+          "title": "Button",
+          "description": "Button"
+        }
+      },
+      "required": [
+        "mainText"
+      ],
+      "title": "Banner"
+    },
+    "ZGVjby1zaXRlcy9icmlkZ2VsYXQvY29tcG9uZW50cy91aS9CYW5uZXIudHN4@Banner[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ZGVjby1zaXRlcy9icmlkZ2VsYXQvY29tcG9uZW50cy91aS9CYW5uZXIudHN4@Banner"
+      },
+      "title": "Banner[]"
+    },
+    "ZGVjby1zaXRlcy9icmlkZ2VsYXQvY29tcG9uZW50cy91aS9CYW5uZXIudHN4@Props": {
+      "type": "object",
+      "properties": {
+        "banners": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9icmlkZ2VsYXQvY29tcG9uZW50cy91aS9CYW5uZXIudHN4@Banner[]",
+          "title": "Banners",
+          "description": "Banners with customizable content"
+        },
+        "interval": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "title": "Autoplay interval",
+          "description": "time (in seconds) to start the carousel autoplay"
+        }
+      },
+      "required": [],
+      "title": "deco-sites/bridgelat/components/ui/Banner.tsx@Props"
     },
     "ZGVjby1zaXRlcy9icmlkZ2VsYXQvc2VjdGlvbnMvRGVzaWduU3lzdGVtLnRzeA==@Colors": {
       "type": "object",
@@ -7215,20 +7717,6 @@
       "required": [],
       "title": "deco-sites/bridgelat/sections/DesignSystem.tsx@Props"
     },
-    "ZGVjby1zaXRlcy9icmlkZ2VsYXQvc2VjdGlvbnMvR2V0U3RhcnRlZC50c3g=@Props": {
-      "type": "object",
-      "properties": {
-        "enableInspectVSCode": {
-          "type": [
-            "boolean",
-            "null"
-          ],
-          "title": "Enable Inspect V S Code"
-        }
-      },
-      "required": [],
-      "title": "deco-sites/bridgelat/sections/GetStarted.tsx@Props"
-    },
     "ZGVjby1zaXRlcy9icmlkZ2VsYXQvc2VjdGlvbnMvSGVhZC50c3g=@Props": {
       "type": "object",
       "properties": {
@@ -7392,30 +7880,31 @@
           "title": "Page"
         },
         "titleTemplate": {
-          "type": "string",
+          "type": [
+            "string",
+            "null"
+          ],
           "title": "Title template",
           "description": "add a %s whenever you want it to be replaced with the product name",
-          "default": "%s | Fashion Store"
+          "default": "%s | Deco.cx"
+        },
+        "title": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Page title override"
         },
         "description": {
           "type": [
             "string",
             "null"
           ],
-          "title": "Meta tag description",
-          "description": "If not set, the product description will be used instead"
-        },
-        "themeColor": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "title": "Theme Color"
+          "title": "Meta tag description override"
         }
       },
       "required": [
-        "page",
-        "titleTemplate"
+        "page"
       ],
       "title": "deco-sites/std/components/seo/SEOPDP.tsx@Props"
     },
@@ -7426,46 +7915,47 @@
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tbWVyY2UvdHlwZXMudHM=@ProductListingPage|null",
           "title": "Page"
         },
+        "titleTemplate": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Title template",
+          "description": "add a %s whenever you want it to be replaced with the product name",
+          "default": "%s | Deco.cx"
+        },
         "title": {
           "type": [
             "string",
             "null"
           ],
-          "title": "Title"
+          "title": "Page title override"
         },
         "description": {
           "type": [
             "string",
             "null"
           ],
-          "title": "Description"
-        },
-        "url": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "title": "Url"
-        },
-        "imageUrl": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "title": "Image Url"
-        },
-        "themeColor": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "title": "Theme Color"
+          "title": "Meta tag description override"
         }
       },
       "required": [
         "page"
       ],
       "title": "deco-sites/std/components/seo/SEOPLP.tsx@Props"
+    },
+    "ZGVjby1zaXRlcy9zdGQvc2VjdGlvbnMvVlRFWFBvcnRhbERhdGFMYXllckNvbXBhdGliaWxpdHkudHN4@LoaderProps": {
+      "type": "object",
+      "properties": {
+        "slug": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvZnVuY3Rpb25zL3JlcXVlc3RUb1BhcmFtLnRz@RequestURLParam",
+          "title": "Slug"
+        }
+      },
+      "required": [
+        "slug"
+      ],
+      "title": "deco-sites/std/sections/VTEXPortalDataLayerCompatibility.tsx@LoaderProps"
     },
     "ZGVjby1jeC9saXZlL21hdGNoZXJzL01hdGNoRGF0ZS50cw==@Props": {
       "type": "object",
@@ -7489,6 +7979,36 @@
       },
       "required": [],
       "title": "deco-cx/live/matchers/MatchDate.ts@Props"
+    },
+    "ZGVjby1jeC9saXZlL21hdGNoZXJzL01hdGNoRGV2aWNlLnRz@Props": {
+      "type": "object",
+      "properties": {
+        "devices": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              {
+                "type": "string",
+                "const": "mobile"
+              },
+              {
+                "type": "string",
+                "const": "tablet"
+              },
+              {
+                "type": "string",
+                "const": "desktop"
+              }
+            ],
+            "type": "string"
+          },
+          "title": "Devices"
+        }
+      },
+      "required": [
+        "devices"
+      ],
+      "title": "deco-cx/live/matchers/MatchDevice.ts@Props"
     },
     "ZGVjby1jeC9saXZlL21hdGNoZXJzL01hdGNoRW52aXJvbm1lbnQudHM=@Props": {
       "type": "object",
@@ -7774,7 +8294,7 @@
       ],
       "title": "WorkflowRef"
     },
-    "ZGVjby1jeC9saXZlL2FjdGlvbnMvd29ya2Zsb3dzL3N0YXJ0LnRz@6fafe0f553db3c0685828404a37be338|WorkflowRef": {
+    "ZGVjby1jeC9saXZlL2FjdGlvbnMvd29ya2Zsb3dzL3N0YXJ0LnRz@142fbddade88bf9fad57aa7ece64475d|WorkflowRef": {
       "anyOf": [
         {
           "$ref": "#/definitions/ZGVjby1jeC9saXZlL2FjdGlvbnMvd29ya2Zsb3dzL3N0YXJ0LnRz@WorkflowRef"
@@ -7792,13 +8312,13 @@
           ]
         }
       ],
-      "title": "6fafe0f553db3c0685828404a37be338|WorkflowRef"
+      "title": "142fbddade88bf9fad57aa7ece64475d|WorkflowRef"
     },
     "ZGVjby1jeC9saXZlL2FjdGlvbnMvd29ya2Zsb3dzL3N0YXJ0LnRz@Props": {
       "type": "object",
       "properties": {
         "workflow": {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2FjdGlvbnMvd29ya2Zsb3dzL3N0YXJ0LnRz@6fafe0f553db3c0685828404a37be338|WorkflowRef",
+          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2FjdGlvbnMvd29ya2Zsb3dzL3N0YXJ0LnRz@142fbddade88bf9fad57aa7ece64475d|WorkflowRef",
           "title": "Workflow"
         },
         "id": {
@@ -8248,31 +8768,9 @@
       ],
       "title": "deco-sites/std/packs/vtex/actions/wishlist/removeItem.ts@Props"
     },
-    "ZGVjby1zaXRlcy9icmlkZ2VsYXQvZnVuY3Rpb25zL0xvYWRHaXRIdWJSYXcudHM=": {
-      "title": "GitHub Raw Loader",
-      "description": "Grabs data from a GitHub repo",
-      "type": "object",
-      "allOf": [
-        {
-          "$ref": "#/definitions/ZGVjby1zaXRlcy9icmlkZ2VsYXQvZnVuY3Rpb25zL0xvYWRHaXRIdWJSYXcudHM=@Props"
-        }
-      ],
-      "required": [
-        "__resolveType"
-      ],
-      "properties": {
-        "__resolveType": {
-          "type": "string",
-          "enum": [
-            "deco-sites/bridgelat/functions/LoadGitHubRaw.ts"
-          ],
-          "default": "deco-sites/bridgelat/functions/LoadGitHubRaw.ts"
-        }
-      }
-    },
     "ZGVjby1zaXRlcy9zdGQvZnVuY3Rpb25zL2J1dHRlckNNU0Fkcy50cw==": {
       "title": "Butter CMS Featured Ads Loader",
-      "description": "Usefull for shelves and static galleries.",
+      "description": "Useful for shelves and static galleries.",
       "type": "object",
       "required": [
         "__resolveType"
@@ -8289,7 +8787,7 @@
     },
     "ZGVjby1zaXRlcy9zdGQvZnVuY3Rpb25zL2J1dHRlckNNU0JyYW5kcy50cw==": {
       "title": "Butter CMS Featured Brands Loader",
-      "description": "Usefull for list featured blog's brands.",
+      "description": "Useful for list featured blog's brands.",
       "type": "object",
       "required": [
         "__resolveType"
@@ -8306,7 +8804,7 @@
     },
     "ZGVjby1zaXRlcy9zdGQvZnVuY3Rpb25zL2J1dHRlckNNU0NhdGVnb3JpZXMudHM=": {
       "title": "Butter CMS Categories Loader",
-      "description": "Usefull for list blog's categories",
+      "description": "Useful for list blog's categories",
       "type": "object",
       "required": [
         "__resolveType"
@@ -8323,7 +8821,7 @@
     },
     "ZGVjby1zaXRlcy9zdGQvZnVuY3Rpb25zL2J1dHRlckNNU0ZlYXR1cmVkUG9zdHMudHM=": {
       "title": "Butter CMS Featured Posts Loader",
-      "description": "Usefull for shelves and static galleries.",
+      "description": "Useful for shelves and static galleries.",
       "type": "object",
       "required": [
         "__resolveType"
@@ -8357,7 +8855,7 @@
     },
     "ZGVjby1zaXRlcy9zdGQvZnVuY3Rpb25zL2J1dHRlckNNU1BsYWNlcy50cw==": {
       "title": "Butter CMS Featured Places Loader",
-      "description": "Usefull for listing places",
+      "description": "Useful for listing places",
       "type": "object",
       "required": [
         "__resolveType"
@@ -8391,7 +8889,7 @@
     },
     "ZGVjby1zaXRlcy9zdGQvZnVuY3Rpb25zL2J1dHRlckNNU1Bvc3RzLnRz": {
       "title": "Butter CMS Posts Loader",
-      "description": "Usefull for paginated galleries.",
+      "description": "Useful for paginated galleries.",
       "type": "object",
       "allOf": [
         {
@@ -8413,7 +8911,7 @@
     },
     "ZGVjby1zaXRlcy9zdGQvZnVuY3Rpb25zL2J1dHRlckNNU1JlbGF0ZWRQb3N0cy50cw==": {
       "title": "Butter CMS Related Posts Loader",
-      "description": "Usefull for paginated or not galleries. Works on routes of type /blog/:slug",
+      "description": "Useful for paginated or not galleries. Works on routes of type /blog/:slug",
       "type": "object",
       "allOf": [
         {
@@ -8491,7 +8989,7 @@
     },
     "ZGVjby1zaXRlcy9zdGQvZnVuY3Rpb25zL3Nob3BpZnlQcm9kdWN0TGlzdC50cw==": {
       "title": "Shopify - Search Products",
-      "description": "Usefull for shelves and static galleries.",
+      "description": "Useful for shelves and static galleries.",
       "type": "object",
       "allOf": [
         {
@@ -8614,7 +9112,7 @@
     },
     "ZGVjby1zaXRlcy9zdGQvZnVuY3Rpb25zL3Z0ZXhMZWdhY3lQcm9kdWN0TGlzdC50cw==": {
       "title": "VTEX - Search Products - legacy (deprecated)",
-      "description": "Usefull for shelves and static galleries.",
+      "description": "Useful for shelves and static galleries.",
       "deprecated": true,
       "type": "object",
       "allOf": [
@@ -9002,7 +9500,7 @@
     },
     "ZGVjby1zaXRlcy9zdGQvbG9hZGVycy92dGV4L2ludGVsbGlnZW50U2VhcmNoL3Byb2R1Y3RMaXN0LnRz": {
       "title": "VTEX product list - Intelligent Search",
-      "description": "Usefull for shelves and galleries.",
+      "description": "Useful for shelves and galleries.",
       "type": "object",
       "allOf": [
         {
@@ -9208,6 +9706,43 @@
             "deco-sites/std/loaders/vtex/wishlist.ts"
           ],
           "default": "deco-sites/std/loaders/vtex/wishlist.ts"
+        }
+      }
+    },
+    "Li9pc2xhbmRzL0hlYWRlci50c3g=": {
+      "title": "./islands/Header.tsx",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9icmlkZ2VsYXQvY29tcG9uZW50cy9oZWFkZXIvSGVhZGVyLnRzeA==@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "./islands/Header.tsx"
+          ],
+          "default": "./islands/Header.tsx"
+        }
+      }
+    },
+    "Li9pc2xhbmRzL1NsaWRlckpTLnRzeA==": {
+      "title": "./islands/SliderJS.tsx",
+      "type": "object",
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "./islands/SliderJS.tsx"
+          ],
+          "default": "./islands/SliderJS.tsx"
         }
       }
     },
@@ -9446,6 +9981,27 @@
         }
       }
     },
+    "ZGVjby1zaXRlcy9icmlkZ2VsYXQvc2VjdGlvbnMvQ2Fyb3VzZWwudHN4": {
+      "title": "deco-sites/bridgelat/sections/Carousel.tsx",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9icmlkZ2VsYXQvY29tcG9uZW50cy91aS9CYW5uZXIudHN4@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/bridgelat/sections/Carousel.tsx"
+          ],
+          "default": "deco-sites/bridgelat/sections/Carousel.tsx"
+        }
+      }
+    },
     "ZGVjby1zaXRlcy9icmlkZ2VsYXQvc2VjdGlvbnMvRGVzaWduU3lzdGVtLnRzeA==": {
       "title": "deco-sites/bridgelat/sections/DesignSystem.tsx",
       "type": "object",
@@ -9467,27 +10023,6 @@
         }
       }
     },
-    "ZGVjby1zaXRlcy9icmlkZ2VsYXQvc2VjdGlvbnMvR2V0U3RhcnRlZC50c3g=": {
-      "title": "deco-sites/bridgelat/sections/GetStarted.tsx",
-      "type": "object",
-      "allOf": [
-        {
-          "$ref": "#/definitions/ZGVjby1zaXRlcy9icmlkZ2VsYXQvc2VjdGlvbnMvR2V0U3RhcnRlZC50c3g=@Props"
-        }
-      ],
-      "required": [
-        "__resolveType"
-      ],
-      "properties": {
-        "__resolveType": {
-          "type": "string",
-          "enum": [
-            "deco-sites/bridgelat/sections/GetStarted.tsx"
-          ],
-          "default": "deco-sites/bridgelat/sections/GetStarted.tsx"
-        }
-      }
-    },
     "ZGVjby1zaXRlcy9icmlkZ2VsYXQvc2VjdGlvbnMvSGVhZC50c3g=": {
       "title": "deco-sites/bridgelat/sections/Head.tsx",
       "type": "object",
@@ -9506,6 +10041,27 @@
             "deco-sites/bridgelat/sections/Head.tsx"
           ],
           "default": "deco-sites/bridgelat/sections/Head.tsx"
+        }
+      }
+    },
+    "ZGVjby1zaXRlcy9icmlkZ2VsYXQvc2VjdGlvbnMvSGVhZGVyLnRzeA==": {
+      "title": "deco-sites/bridgelat/sections/Header.tsx",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9icmlkZ2VsYXQvY29tcG9uZW50cy9oZWFkZXIvSGVhZGVyLnRzeA==@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/bridgelat/sections/Header.tsx"
+          ],
+          "default": "deco-sites/bridgelat/sections/Header.tsx"
         }
       }
     },
@@ -9719,6 +10275,27 @@
         }
       }
     },
+    "ZGVjby1zaXRlcy9zdGQvc2VjdGlvbnMvVlRFWFBvcnRhbERhdGFMYXllckNvbXBhdGliaWxpdHkudHN4": {
+      "title": "deco-sites/std/sections/VTEXPortalDataLayerCompatibility.tsx",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvc2VjdGlvbnMvVlRFWFBvcnRhbERhdGFMYXllckNvbXBhdGliaWxpdHkudHN4@LoaderProps"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/std/sections/VTEXPortalDataLayerCompatibility.tsx"
+          ],
+          "default": "deco-sites/std/sections/VTEXPortalDataLayerCompatibility.tsx"
+        }
+      }
+    },
     "JGxpdmUvbWF0Y2hlcnMvTWF0Y2hBbHdheXMudHM=": {
       "title": "$live/matchers/MatchAlways.ts",
       "type": "object",
@@ -9753,6 +10330,28 @@
             "$live/matchers/MatchDate.ts"
           ],
           "default": "$live/matchers/MatchDate.ts"
+        }
+      }
+    },
+    "JGxpdmUvbWF0Y2hlcnMvTWF0Y2hEZXZpY2UudHM=": {
+      "title": "Device Matcher",
+      "description": "Matches the user based on the used device, options are: mobile, desktop or tablet.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1jeC9saXZlL21hdGNoZXJzL01hdGNoRGV2aWNlLnRz@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "$live/matchers/MatchDevice.ts"
+          ],
+          "default": "$live/matchers/MatchDevice.ts"
         }
       }
     },
@@ -10378,9 +10977,6 @@
           "$ref": "#/definitions/Resolvable"
         },
         {
-          "$ref": "#/definitions/ZGVjby1zaXRlcy9icmlkZ2VsYXQvZnVuY3Rpb25zL0xvYWRHaXRIdWJSYXcudHM="
-        },
-        {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvZnVuY3Rpb25zL2J1dHRlckNNU0Fkcy50cw=="
         },
         {
@@ -10542,7 +11138,17 @@
     },
     "islands": {
       "title": "islands",
-      "anyOf": []
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Resolvable"
+        },
+        {
+          "$ref": "#/definitions/Li9pc2xhbmRzL0hlYWRlci50c3g="
+        },
+        {
+          "$ref": "#/definitions/Li9pc2xhbmRzL1NsaWRlckpTLnRzeA=="
+        }
+      ]
     },
     "handlers": {
       "title": "handlers",
@@ -10600,13 +11206,16 @@
           "$ref": "#/definitions/JGxpdmUvc2VjdGlvbnMvVXNlU2xvdC50c3g="
         },
         {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9icmlkZ2VsYXQvc2VjdGlvbnMvQ2Fyb3VzZWwudHN4"
+        },
+        {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9icmlkZ2VsYXQvc2VjdGlvbnMvRGVzaWduU3lzdGVtLnRzeA=="
         },
         {
-          "$ref": "#/definitions/ZGVjby1zaXRlcy9icmlkZ2VsYXQvc2VjdGlvbnMvR2V0U3RhcnRlZC50c3g="
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9icmlkZ2VsYXQvc2VjdGlvbnMvSGVhZC50c3g="
         },
         {
-          "$ref": "#/definitions/ZGVjby1zaXRlcy9icmlkZ2VsYXQvc2VjdGlvbnMvSGVhZC50c3g="
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9icmlkZ2VsYXQvc2VjdGlvbnMvSGVhZGVyLnRzeA=="
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvc2VjdGlvbnMvQW5hbHl0aWNzLnRzeA=="
@@ -10637,6 +11246,9 @@
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvc2VjdGlvbnMvU0VPUExQLnRzeA=="
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvc2VjdGlvbnMvVlRFWFBvcnRhbERhdGFMYXllckNvbXBhdGliaWxpdHkudHN4"
         }
       ]
     },
@@ -10651,6 +11263,9 @@
         },
         {
           "$ref": "#/definitions/JGxpdmUvbWF0Y2hlcnMvTWF0Y2hEYXRlLnRz"
+        },
+        {
+          "$ref": "#/definitions/JGxpdmUvbWF0Y2hlcnMvTWF0Y2hEZXZpY2UudHM="
         },
         {
           "$ref": "#/definitions/JGxpdmUvbWF0Y2hlcnMvTWF0Y2hFbnZpcm9ubWVudC50cw=="

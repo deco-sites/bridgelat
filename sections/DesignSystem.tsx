@@ -8,7 +8,6 @@ import { Color } from "https://deno.land/x/color@v0.3.0/mod.ts";
 import { useId } from "preact/hooks";
 import { Head } from "$fresh/runtime.ts";
 import { theme as defaultTheme } from "../tailwind.config.ts";
-import Icon from "../components/ui/Icon.tsx";
 
 export interface Colors {
   /**
@@ -305,9 +304,9 @@ function Section({
   colors,
   miscellaneous,
   fonts = {
-    fontFamily: "Albert Sans",
+    fontFamily: "Work Sans",
     styleInnerHtml:
-      "@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;700&display=swap');",
+      "@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Work+Sans:wght@400;500;700&display=swap');",
   },
 }: Props) {
   const id = useId();
@@ -528,7 +527,20 @@ export function Preview(props: Props) {
           <div class="navbar bg-neutral text-neutral-content rounded-box">
             <div class="flex-none">
               <button class="btn btn-square btn-ghost">
-                <Icon id="Bars3" strokeWidth={0.1} size={24} />
+                <svg
+                  id="Bars3"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  stroke="currentColor"
+                  fill="none"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M2.5 5.00033C2.5 4.54009 2.8731 4.16699 3.33333 4.16699H16.6667C17.1269 4.16699 17.5 4.54009 17.5 5.00033C17.5 5.46056 17.1269 5.83366 16.6667 5.83366H3.33333C2.8731 5.83366 2.5 5.46056 2.5 5.00033ZM2.5 10.0003C2.5 9.54009 2.8731 9.16699 3.33333 9.16699H16.6667C17.1269 9.16699 17.5 9.54009 17.5 10.0003C17.5 10.4606 17.1269 10.8337 16.6667 10.8337H3.33333C2.8731 10.8337 2.5 10.4606 2.5 10.0003ZM2.5 15.0003C2.5 14.5401 2.8731 14.167 3.33333 14.167H16.6667C17.1269 14.167 17.5 14.5401 17.5 15.0003C17.5 15.4606 17.1269 15.8337 16.6667 15.8337H3.33333C2.8731 15.8337 2.5 15.4606 2.5 15.0003Z"
+                    fill="currentColor"
+                  />
+                </svg>
               </button>
             </div>{" "}
             <div class="flex-1">
